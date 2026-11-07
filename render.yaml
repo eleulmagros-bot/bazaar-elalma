@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: bazaar-elalma-catalog
+    runtime: node
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /health
+    envVars:
+      - key: TELEGRAM_BOT_TOKEN
+        sync: false
+      - key: APP_URL
+        sync: false
+      - key: WEBHOOK_SECRET
+        generateValue: true
+      - key: WHATSAPP_NUMBER
+        value: "213773760420"
