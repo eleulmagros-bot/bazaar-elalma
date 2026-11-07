@@ -105,4 +105,30 @@ app.post('/setup-webhook', async (req, res) => {
   } catch (e) { res.status(500).json({error:e.message}); }
 });
 
-app.listen(PORT, () => console.log(`Catalog running on port ${PORT}`));
+app.listen(PORT, async () => {
+  console.log(`Catalog running on port ${PORT}`);
+
+  if (!BOT_TOKEN) {
+    console.error('ERROR: TELEGRAM_BOT_TOKEN is missing');
+    return;
+  }
+
+  const baseUrl = (process.env.APP_URL || '').replace(/\/$/, '');
+
+  if (!baseUrl) {
+    console.error('ERROR: APP_URL is missing');
+    return;
+  }
+
+  try {
+    const result = await telegram('setWebhook', {
+      url: `${baseUrl}/telegram/webhook`,
+      ...(WEBHOOK_SECRET ? { secret_token: WEBHOOK_SECRET } : {}),
+      allowed_updates: ['channel_post']
+    });
+
+    console.log('TELEGRAM WEBHOOK CONFIGURED:', result);
+  } catch (error) {
+    console.error('WEBHOOK ERROR:', error.message);
+  }
+});
