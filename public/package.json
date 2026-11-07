@@ -1,0 +1,9 @@
+{
+  "name": "bazaar-elalma-catalog",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Arabic wholesale product catalog synced from a Telegram channel",
+  "main": "server.js",
+  "scripts": {"start": "node server.js"},
+  "dependencies": {"express": "^4.21.2"}
+}
