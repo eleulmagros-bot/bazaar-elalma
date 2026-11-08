@@ -1,9 +1,14 @@
 {
-  "name": "bazaar-elalma-catalog",
-  "version": "2.0.0",
-  "private": true,
-  "description": "Telegram wholesale catalog, ordering and PDF invoices",
-  "main": "server.js",
-  "scripts": {"start": "node server.js"},
-  "dependencies": {"express": "^4.21.2", "pdfkit": "^0.15.0"}
+"name": "bazaar-elalma-catalog",
+"version": "2.0.0",
+"private": true,
+"description": "Telegram wholesale catalog, ordering and PDF invoices",
+"main": "server.js",
+"scripts": {
+"start": "node server.js"
+},
+"dependencies": {
+"express": "^4.21.2",
+"pdfkit": "^0.15.0"
+}
 }
